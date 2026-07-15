@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background: #020617;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* yumuşak tema geçişi */
+body, .bg-slate-950, .bg-slate-900, .bg-slate-800, .bg-slate-700,
+.border-slate-800, .border-slate-700, .border-slate-600,
+.text-slate-100, .text-slate-200, .text-slate-300, .text-slate-400 {
+  transition: background-color .25s ease, border-color .25s ease, color .2s ease;
+}
+
+/* giriş ekranı arka planı (tema duyarlı) */
+.gc-authbg { background: radial-gradient(900px 500px at 50% -10%, #1e293b, #020617); }
+
+/* ============================================================
+   AÇIK (BEYAZ) TEMA — slate paletini aydınlık karşılıklarına çevirir
+   ============================================================ */
+.theme-light body { background: #eef2f7; }
+.theme-light .gc-authbg { background: radial-gradient(1000px 560px at 50% -10%, #ffffff, #dde6f0); }
+
+/* yüzeyler */
+.theme-light .bg-slate-950 { background-color: #eef2f7 !important; }
+.theme-light .bg-slate-900 { background-color: #ffffff !important; }
+.theme-light .bg-slate-800 { background-color: #e2e8f0 !important; }
+.theme-light .bg-slate-700 { background-color: #cbd5e1 !important; }
+.theme-light .bg-slate-950\/40 { background-color: #f1f5f9 !important; }
+.theme-light .bg-slate-950\/60 { background-color: #f1f5f9 !important; }
+.theme-light .bg-slate-800\/40 { background-color: rgba(226,232,240,0.55) !important; }
+
+/* kenarlıklar */
+.theme-light .border-slate-800 { border-color: #e5e9f0 !important; }
+.theme-light .border-slate-700 { border-color: #d4dbe5 !important; }
+.theme-light .border-slate-600 { border-color: #cbd5e1 !important; }
+
+/* metinler */
+.theme-light .text-slate-100 { color: #0f172a !important; }
+.theme-light .text-slate-200 { color: #1e293b !important; }
+.theme-light .text-slate-300 { color: #334155 !important; }
+.theme-light .text-slate-400 { color: #52617a !important; }
+.theme-light .text-slate-500 { color: #64748b !important; }
+
+/* hover durumları */
+.theme-light .hover\:bg-slate-800:hover { background-color: #e2e8f0 !important; }
+.theme-light .hover\:bg-slate-700:hover { background-color: #cbd5e1 !important; }
+.theme-light .hover\:bg-slate-800\/40:hover { background-color: rgba(226,232,240,0.7) !important; }
+.theme-light .hover\:text-slate-100:hover { color: #0f172a !important; }
+.theme-light .hover\:text-slate-200:hover { color: #1e293b !important; }
+
+/* açık temada kartlara ince gölge (VIP his) */
+.theme-light .bg-slate-900.border { box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04); }
+
+/* ince scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.35); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(148,163,184,0.55); }
+
+/* ============ MOBİL İYİLEŞTİRMELER ============ */
+@media (max-width: 768px) {
+  /* Tablolar mobilde yatay kaydırılabilir olsun (taşma/kırpılma olmasın) */
+  table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table thead, table tbody, table tfoot { display: table; width: 100%; min-width: max-content; }
+  table th, table td { white-space: nowrap; }
+  /* Başlıklar biraz küçülsün */
+  h1 { font-size: 1.4rem; line-height: 1.2; }
+  /* Kart içi yatay padding mobilde azalsın */
+  .gc-pad-sm { padding-left: 0.75rem; padding-right: 0.75rem; }
+  /* Buton grupları sığmazsa alt satıra geçsin */
+  .gc-btnrow { flex-wrap: wrap; }
+}
+/* Dokunmatik hedefler biraz daha büyük (mobil kullanışlılık) */
+@media (max-width: 768px) {
+  button { min-height: 36px; }
+}
